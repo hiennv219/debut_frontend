@@ -5,13 +5,14 @@
 */
 import 'common/bootstrap';
 import Vue from 'vue';
+import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import Routers from './routes';
 import VeeValidate, { Validator } from 'vee-validate';
-// import GlobalSocket from './GlobalSocket';
-// import ClickOutside from './directives/click_outside.js';
 import VTooltip from 'v-tooltip';
+import Toasted from 'vue-toasted';
 
+import store from '../common/store';
 import App from './components/App.vue';
 
 Vue.use(VueRouter);
@@ -21,11 +22,13 @@ const router = new VueRouter(Routers);
 const i18n = window.i18n;
 
 Vue.use(VeeValidate);
-// Vue.directive('click-outside', ClickOutside);
+Vue.use(VTooltip);
+Vue.use(Toasted);
 
 window.app = new Vue({
   i18n,
   router,
+  store,
   render (createElement) {
    return createElement(App);
   },
