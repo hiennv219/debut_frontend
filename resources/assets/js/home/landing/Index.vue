@@ -1,13 +1,14 @@
 <template>
   <div class="">
-      <p>Debut in VueJS</p>
+      <p>Landing page in VueJS</p>
+      {{ $t('window_title')}}
   </div>
 </template>
 
 <script>
 export default {
   mounted() {
-    //do something after mounting vue instance
+    
   }
 }
 </script>
