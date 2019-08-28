@@ -81,6 +81,8 @@ const localeStorage = LocalStorageUtils.getItem('user.locale') || DEFAULT_USER_L
 const locale = localeStorage.lang;
 document.documentElement.setAttribute('lang', locale);
 
+console.log("locale: ", locale);
+
 window.i18n = new VueI18n({
   locale,
   messages,

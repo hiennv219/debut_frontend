@@ -32,11 +32,10 @@
                   <div class="menu-sub menu-drop menu-mega menu-mega-2clmn">
                     <div class="menu-mega-innr">
                       <ul class="menu-mega-list">
-                        <li class="menu-item"><a href="block-navbar.html">English</a></li>
-                        <li class="menu-item"><a href="block-page-header.html">Korean</a></li>
-                        <li class="menu-item"><a href="block-footer.html">Chinese</a></li>
+                        <li class="menu-item" v-for="locale in supportedLocales">
+                          <a @click="updateUserLocale(locale)">{{ $t(`header.lang_${locale}`) }}</a>
+                        </li>
                       </ul>
-
                     </div>
                   </div></li>
               </ul>
@@ -55,7 +54,28 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import Utils from 'common/lib/Utils';
+
+
 export default {
+  name: 'Navigation',
+  components: {
+
+  },
+  data() {
+    return {
+
+    }
+  },
+  computed: {
+    ...mapState(['supportedLocales']),
+  },
+  methods: {
+    updateUserLocale(locale) {
+      Utils.setI18nLocale(locale);
+    }
+  }
 }
 </script>
 

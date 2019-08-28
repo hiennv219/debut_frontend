@@ -8,6 +8,7 @@ const store = new Vuex.Store({
     isAuthenticated: false,
     masterdata: {},
     appTitle: 'Project debut',
+    supportedLocales: ['en', 'ko', 'zh', 'vi'],
   },
   getters: {
     setTitle(name) {
