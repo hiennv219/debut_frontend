@@ -1,0 +1,26 @@
+// v-toasted global scss
+@mixin toasted-01($backgroundColor, $textColor) {
+  background-color: $backgroundColor !important;
+  padding: 0 30px;
+  color: $textColor !important;
+  font-weight: bold !important;
+
+  .toasted-icon {
+    color: $textColor;
+    margin-right: 15px;
+  }
+}
+
+.toasted-success {
+  $backgroundColor: #e7f5e7;
+  $textColor: #11a111;
+
+  @include toasted-01($backgroundColor, $textColor);
+}
+
+.toasted-fail {
+  $backgroundColor: #fceaea;
+  $textColor: #e63332;
+  
+  @include toasted-01($backgroundColor, $textColor);
+}
