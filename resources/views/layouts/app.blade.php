@@ -12,6 +12,10 @@
     <div id="app">
       <p>Blade is template html</p>
     </div>
+    <script src="{{ mix('/js/socket.io.js') }}"></script>
+    <script>
+      var ECHO_URL = "{{ env('ECHO_URL', 'http://' . Request::getHost()) }}";
+    </script>
     <script src="{{ mix('js/app.js') }}"></script>
   </body>
 </html>
