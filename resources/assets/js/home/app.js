@@ -32,7 +32,7 @@ Vue.use(VueBroadcast);
 
 
 // Vue.component(VueQrcode.name, VueQrcode);
-// Vue.use(VeeValidate);
+Vue.use(VeeValidate);
 // Vue.use(VTooltip);
 Vue.use(Toasted);
 // Vue.use(VModal);

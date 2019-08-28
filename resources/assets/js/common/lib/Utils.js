@@ -12,4 +12,9 @@ export default {
     window.i18n.locale = locale;
     document.documentElement.setAttribute('lang', locale);
   },
+
+  getTimzoneOffset () {
+    const date = new Date();
+    return date.getTimezoneOffset();
+  },
 }
