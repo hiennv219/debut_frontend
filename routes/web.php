@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
-});
+Route::get('/', 'HomeController@index');
+Route::get('/{view?}', 'HomeController@index');
