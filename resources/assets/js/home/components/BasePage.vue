@@ -2,7 +2,9 @@
   <div>
     <div class="nk-wrap">
       <navigation/>
-      <router-view></router-view>
+      <main class="nk-pages">
+        <router-view></router-view>
+      </main>
     </div>
     <div class="preloader">
   		<span class="spinner spinner-round"></span>

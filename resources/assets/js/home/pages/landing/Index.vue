@@ -1,7 +1,7 @@
 <template>
   <div class="">
       <h2 class="text-center title-home-page">{{ $t('window_title')}}</h2>
-      <p class="text-center text-gray">{{ $t('index_page.wellcome') }}</p>
+      <p class="text-center text-gray">{{ $t('index_page.welcome') }}</p>
 
       <div class="text-center">
         <router-link to="/login" class="btn btn-primary">

@@ -2161,6 +2161,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -2250,17 +2252,59 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     //do something after mounting vue instance
-    this.$toasted.show("Toasted !!", {
+    this.$toasted.show("welcome to login page", {
       theme: "toasted-primary",
       position: "top-right",
-      duration: 5000,
-      icon: {
-        name: 'watch'
-      }
+      duration: 1000
     });
   }
 });
@@ -2272,6 +2316,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -15986,7 +16077,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -16046,7 +16137,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -72053,7 +72144,11 @@ var render = function() {
     _c(
       "div",
       { staticClass: "nk-wrap" },
-      [_c("navigation"), _vm._v(" "), _c("router-view")],
+      [
+        _c("navigation"),
+        _vm._v(" "),
+        _c("main", { staticClass: "nk-pages" }, [_c("router-view")], 1)
+      ],
       1
     ),
     _vm._v(" "),
@@ -72095,7 +72190,110 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", {}, [_c("p", [_vm._v("Register")])])
+    return _c("div", {}, [
+      _c("div", { staticClass: "section section-l" }, [
+        _c("div", { staticClass: "container" }, [
+          _c(
+            "div",
+            { staticClass: "nk-blocks d-flex justify-content-center" },
+            [
+              _c("div", { staticClass: "ath-container m-0" }, [
+                _c("div", { staticClass: "ath-body" }, [
+                  _c("h5", { staticClass: "ath-heading title" }, [
+                    _vm._v("Sign Up"),
+                    _c("small", { staticClass: "tc-default" }, [
+                      _vm._v("Create New TRT Wallet Account")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("form", { attrs: { action: "./" } }, [
+                    _c("div", { staticClass: "field-item" }, [
+                      _c("div", { staticClass: "field-wrap" }, [
+                        _c("input", {
+                          staticClass: "input-bordered",
+                          attrs: { type: "text", placeholder: "ID(Email)" }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "field-item" }, [
+                      _c("div", { staticClass: "field-wrap" }, [
+                        _c("input", {
+                          staticClass: "input-bordered",
+                          attrs: { type: "password", placeholder: "Password" }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "field-item" }, [
+                      _c("div", { staticClass: "field-wrap" }, [
+                        _c("input", {
+                          staticClass: "input-bordered",
+                          attrs: {
+                            type: "password",
+                            placeholder: "Repeat Password"
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "field-item" }, [
+                      _c("div", { staticClass: "field-wrap" }, [
+                        _c("input", {
+                          staticClass: "input-bordered",
+                          attrs: { type: "text", placeholder: "National" }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "field-item" }, [
+                      _c("div", { staticClass: "field-wrap" }, [
+                        _c("input", {
+                          staticClass: "input-bordered",
+                          attrs: { type: "text", placeholder: "Tel" }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "field-item" }, [
+                      _c("input", {
+                        staticClass: "input-checkbox",
+                        attrs: { id: "agree-term-2", type: "checkbox" }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "agree-term-2" } }, [
+                        _vm._v("I agree to Icos "),
+                        _c("a", { attrs: { href: "#" } }, [
+                          _vm._v("Privacy Policy")
+                        ]),
+                        _vm._v(" & "),
+                        _c("a", { attrs: { href: "#" } }, [_vm._v("Terms")]),
+                        _vm._v(".")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      { staticClass: "btn btn-primary btn-block btn-md" },
+                      [_vm._v("Sign Up")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ath-note text-center" }, [
+                    _vm._v(
+                      "\n                          Already have an account? "
+                    ),
+                    _c("a", { attrs: { href: "page-login-v2.html" } }, [
+                      _c("strong", [_vm._v("Sign in here")])
+                    ])
+                  ])
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -72171,7 +72369,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("p", { staticClass: "text-center text-gray" }, [
-      _vm._v(_vm._s(_vm.$t("index_page.wellcome")))
+      _vm._v(_vm._s(_vm.$t("index_page.welcome")))
     ]),
     _vm._v(" "),
     _c(
@@ -72228,7 +72426,89 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", {}, [_c("p", [_vm._v("Login")])])
+    return _c("div", {}, [
+      _c("div", { staticClass: "section section-l" }, [
+        _c("div", { staticClass: "container" }, [
+          _c(
+            "div",
+            { staticClass: "nk-blocks d-flex justify-content-center" },
+            [
+              _c("div", { staticClass: "ath-container m-0" }, [
+                _c("div", { staticClass: "ath-body" }, [
+                  _c("h5", { staticClass: "ath-heading title" }, [
+                    _vm._v("\n\t\t\t\t\t\t\t\tSign In"),
+                    _c("small", { staticClass: "tc-default" }, [
+                      _vm._v("with your TRT Wallet")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("form", { attrs: { action: "./" } }, [
+                    _c("div", { staticClass: "field-item" }, [
+                      _c("div", { staticClass: "field-wrap" }, [
+                        _c("input", {
+                          staticClass: "input-bordered",
+                          attrs: { type: "text", placeholder: "Your Email" }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "field-item" }, [
+                      _c("div", { staticClass: "field-wrap" }, [
+                        _c("input", {
+                          staticClass: "input-bordered",
+                          attrs: { type: "password", placeholder: "Password" }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "field-item d-flex justify-content-between align-items-center"
+                      },
+                      [
+                        _c("div", { staticClass: "field-item pb-0" }, [
+                          _c("input", {
+                            staticClass: "input-checkbox",
+                            attrs: { id: "remember-me-100", type: "checkbox" }
+                          }),
+                          _vm._v(" "),
+                          _c("label", { attrs: { for: "remember-me-100" } }, [
+                            _vm._v("Remember\n\t\t\t\t\t\t\t\t\t\t\tMe")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "forget-link fz-6" }, [
+                          _c("a", { attrs: { href: "page-reset-v2.html" } }, [
+                            _vm._v("Forgot password?")
+                          ])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      { staticClass: "btn btn-primary btn-block btn-md" },
+                      [_vm._v("Sign\n\t\t\t\t\t\t\t\t\tIn")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ath-note text-center" }, [
+                    _vm._v("\n\t\t\t\t\t\t\t\tDon’t have an account? "),
+                    _c("a", { attrs: { href: "page-register-v2.html" } }, [
+                      _c("strong", [
+                        _vm._v("Sign\n\t\t\t\t\t\t\t\t\t\tup here")
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -88775,7 +89055,7 @@ window.i18n = new __WEBPACK_IMPORTED_MODULE_3_vue_i18n__["a" /* default */]({
   index_page: {
     login: "Login",
     register: "Register",
-    wellcome: "The safest and most popular wallet for investing and storing cryptocurrencies"
+    welcome: "The safest and most popular wallet for investing and storing cryptocurrencies"
   }
 
 });
@@ -88792,7 +89072,7 @@ window.i18n = new __WEBPACK_IMPORTED_MODULE_3_vue_i18n__["a" /* default */]({
   index_page: {
     login: "Đăng nhập",
     register: "Đăng ký",
-    wellcome: "Ví an toàn và thông dụng nhất để đầu tư và lưu trữ tiền kỹ thuật số"
+    welcome: "Ví an toàn và thông dụng nhất để đầu tư và lưu trữ tiền kỹ thuật số"
   }
 
 });

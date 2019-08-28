@@ -4,7 +4,7 @@ export default {
   index_page: {
     login: "Đăng nhập",
     register: "Đăng ký",
-    wellcome: "Ví an toàn và thông dụng nhất để đầu tư và lưu trữ tiền kỹ thuật số",
+    welcome: "Ví an toàn và thông dụng nhất để đầu tư và lưu trữ tiền kỹ thuật số",
   }
 
 }
