@@ -58,6 +58,10 @@ export default {
     	 position: "top-right",
     	 duration : 1000,
     });
+
+    this.$on('UserSessionRegistered', (data) => {
+      console.log("UserSessionRegistered", data);
+    });
   }
 }
 </script>

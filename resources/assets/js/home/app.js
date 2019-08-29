@@ -20,7 +20,6 @@ import Toasted from 'vue-toasted';
 // import VueQrcode from '@chenfengyuan/vue-qrcode';
 // import VModal from 'vue-js-modal';
 import vClickOutside from 'v-click-outside';
-// import ClickOutside from './directives/click_outside.js';
 
 
 import store from '../common/store';
@@ -39,7 +38,6 @@ Vue.use(Toasted);
 // Vue.use(VueQrcode);
 // Vue.use(FullScreen);
 // Vue.use(VueLoading);
-// Vue.directive('click-outside', ClickOutside);
 Vue.use(vClickOutside);
 
 const router = new VueRouter(Routers);
