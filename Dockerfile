@@ -8,10 +8,10 @@ RUN apk --no-cache add curl nodejs make autoconf libpng libpng-dev mysql-client 
     apk del --no-cache libpng-dev && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
-ADD . /var/www/debut
+ADD . /var/www/debut_frontend
 
-WORKDIR /var/www/debut
+WORKDIR /var/www/debut_frontend
 
-EXPOSE 9000
+EXPOSE 8000
 
-CMD ["php", "-S", "0.0.0.0:9000", "-t", "/var/www/debut/public"]
+CMD ["php", "-S", "0.0.0.0:8000", "-t", "/var/www/debut_frontend/public"]

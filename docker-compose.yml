@@ -1,10 +1,10 @@
 version: '3'
 services:
   web:
-    container_name: debut_web
+    container_name: debut_frontend
     build: .
     ports:
-      - "9000:9000"
-    working_dir: /var/www/debut
+      - "9011:8000"
+    working_dir: /var/www/debut_frontend
     volumes:
-      - .:/var/www/debut
+      - .:/var/www/debut_frontend
