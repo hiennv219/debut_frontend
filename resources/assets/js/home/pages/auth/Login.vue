@@ -65,8 +65,8 @@ export default {
         password: this.password
       };
 
-      rf.getRequest('UserRequest').login(params).then((res) => {
-        AuthenticationUtils.saveAuthenticationData(response);
+      rf.getRequest('UserRequest').login(params).then(res => {
+        AuthenticationUtils.saveAuthenticationData(res);
         window.location.href = '/homie';
       }).catch((error) => {
         console.log("ERROR.", error);

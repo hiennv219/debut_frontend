@@ -70,7 +70,7 @@ export default {
         c_password: this.c_password,
         tel: this.tel
       };
-      rf.getRequest('UserRequest').register(params).then((res) => {
+      rf.getRequest('UserRequest').register(params).then(res => {
         console.log(res);
       }).catch((error) => {
         console.log(error);
