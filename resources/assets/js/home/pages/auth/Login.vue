@@ -10,9 +10,15 @@
 							</h5>
 								<div class="field-item">
 									<div class="field-wrap">
-										<input  v-model="email" type="text" class="input-bordered"
+										<input v-model="email"
+                      v-validate.disable="'required|email|max:190'"
+                      name="email"
+                      type="text" class="input-bordered"
 											placeholder="Your Email">
 									</div>
+                  <div :class="errors.has('email') ? 'text-danger' : ''" class="warning-message" >
+                    <span>{{ errors.first('email') }}</span>
+                  </div>
 								</div>
 								<div class="field-item">
 									<div class="field-wrap">
@@ -60,17 +66,24 @@ export default {
   },
   methods: {
     login() {
-      const params = {
-        email: this.email,
-        password: this.password
-      };
+      this.$validator.validate().then(async (result) => {
+        if (!result) {
+          return;
+        }
 
-      rf.getRequest('UserRequest').login(params).then(res => {
-        AuthenticationUtils.saveAuthenticationData(res.data);
-        window.location.href = '/homie';
-      }).catch((error) => {
-        console.log("ERROR.", error);
+        const params = {
+          email: this.email,
+          password: this.password
+        };
+
+        rf.getRequest('UserRequest').login(params).then(res => {
+          AuthenticationUtils.saveAuthenticationData(res.data);
+          window.location.href = '/homie';
+        }).catch((error) => {
+          console.log("ERROR.", error);
+        });
       });
+
     }
   },
   mounted() {
