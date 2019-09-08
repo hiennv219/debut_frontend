@@ -40,6 +40,13 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             'bindings',
+
+            /*
+            *Allow access to XMLHttpRequest connect API domain another
+            *has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+            */
+            \Barryvdh\Cors\HandleCors::class,
+
         ],
     ];
 
