@@ -13,6 +13,7 @@
 										<input v-model="email"
                       v-validate.disable="'required|email|max:190'"
                       name="email"
+                      :class="errors.has('email') ? 'is-invalid': ''"
                       type="text" class="input-bordered"
 											placeholder="Your Email">
 									</div>
@@ -22,9 +23,16 @@
 								</div>
 								<div class="field-item">
 									<div class="field-wrap">
-										<input v-model="password" type="password" class="input-bordered"
+										<input v-model="password"
+                      v-validate.disabled="'required|max:190'"
+                      name="password"
+                      :class="errors.has('email') ? 'is-invalid': ''"
+                      type="password" class="input-bordered"
 											placeholder="Password">
 									</div>
+                  <div :class="errors.has('password') ? 'text-danger' : ''" class="warning-message" >
+                    <span>{{ errors.first('password') }}</span>
+                  </div>
 								</div>
 								<div
 									class="field-item d-flex justify-content-between align-items-center">
@@ -102,4 +110,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+  .input-bordered.is-invalid{
+    border: 1px solid red;
+  }
 </style>
