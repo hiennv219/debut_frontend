@@ -16,7 +16,9 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-
+    updateIsAuthenticated (state, data) {
+      state.isAuthenticated = data;
+    },
   },
   actions: {
 
