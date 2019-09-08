@@ -31,7 +31,7 @@ export default {
           name: 'Register'
         },
         {
-          path: '/debut',
+          path: '/homie',
           component: DebutIndex,
           meta: {
             requiresAuth: true

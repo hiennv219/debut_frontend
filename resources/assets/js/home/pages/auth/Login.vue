@@ -66,7 +66,7 @@ export default {
       };
 
       rf.getRequest('UserRequest').login(params).then(res => {
-        AuthenticationUtils.saveAuthenticationData(res);
+        AuthenticationUtils.saveAuthenticationData(res.data);
         window.location.href = '/homie';
       }).catch((error) => {
         console.log("ERROR.", error);
