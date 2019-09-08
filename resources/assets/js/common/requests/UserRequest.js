@@ -10,4 +10,9 @@ export default class UserRequest extends BaseModelRequest {
     return this.post(url, params);
   }
 
+  login(params) {
+    const url = '/login';
+    return this.post(url, params);
+  }
+
 }

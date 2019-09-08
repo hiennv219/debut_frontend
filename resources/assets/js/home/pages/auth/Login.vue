@@ -8,23 +8,22 @@
 							<h5 class="ath-heading title">
 								Sign In<small class="tc-default">with your TRT Wallet</small>
 							</h5>
-							<form action="./">
 								<div class="field-item">
 									<div class="field-wrap">
-										<input type="text" class="input-bordered"
+										<input  v-model="email" type="text" class="input-bordered"
 											placeholder="Your Email">
 									</div>
 								</div>
 								<div class="field-item">
 									<div class="field-wrap">
-										<input type="password" class="input-bordered"
+										<input v-model="password" type="password" class="input-bordered"
 											placeholder="Password">
 									</div>
 								</div>
 								<div
 									class="field-item d-flex justify-content-between align-items-center">
 									<div class="field-item pb-0">
-										<input class="input-checkbox" id="remember-me-100"
+										<input v-model="remenber" class="input-checkbox" id="remember-me-100"
 											type="checkbox"> <label for="remember-me-100">Remember
 											Me</label>
 									</div>
@@ -32,9 +31,7 @@
 										<a href="page-reset-v2.html">Forgot password?</a>
 									</div>
 								</div>
-								<button class="btn btn-primary btn-block btn-md">Sign
-									In</button>
-							</form>
+								<button @click="login" class="btn btn-primary btn-block btn-md">Sign In</button>
 
 
 							<div class="ath-note text-center">
@@ -50,7 +47,32 @@
 </template>
 
 <script>
+import rf from 'common/requests/RequestFactory';
+import AuthenticationUtils from 'common/AuthenticationUtils';
+
 export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+      remenber: ''
+    }
+  },
+  methods: {
+    login() {
+      const params = {
+        email: this.email,
+        password: this.password
+      };
+
+      rf.getRequest('UserRequest').login(params).then((res) => {
+        AuthenticationUtils.saveAuthenticationData(response);
+        window.location.href = '/homie';
+      }).catch((error) => {
+        console.log("ERROR.", error);
+      });
+    }
+  },
   mounted() {
     //do something after mounting vue instance
     this.$toasted.show("welcome to login page", {
