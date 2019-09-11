@@ -3,6 +3,7 @@ import LangdingPage from './pages/landing/Index.vue';
 import DebutIndex from './pages/landing/DebutIndex.vue';
 import Login from './pages/auth/Login.vue';
 import Register from './pages/auth/Register.vue';
+import PrivateSpaceIndex from './pages/private/Index.vue';
 
 export default {
   mode: 'history',
@@ -38,8 +39,11 @@ export default {
           }
         },
         {
-          path: '/test',
-          component: DebutIndex,
+          path: '/private-space',
+          component: PrivateSpaceIndex,
+          meta: {
+            requiresAuth: true
+          }
         },
       ]
     },

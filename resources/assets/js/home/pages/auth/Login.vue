@@ -86,7 +86,7 @@ export default {
 
         rf.getRequest('UserRequest').login(params).then(res => {
           AuthenticationUtils.saveAuthenticationData(res.data);
-          window.location.href = '/homie';
+          window.location.href = '/private-space';
         }).catch((error) => {
           console.log("ERROR.", error);
         });
