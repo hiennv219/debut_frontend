@@ -17,9 +17,6 @@ export default {
           path: '/',
           component: LangdingPage,
           name: 'LangdingPage',
-          meta: {
-            requiresGuest: true,
-          }
         },
         {
           path: '/login',

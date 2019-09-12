@@ -11,7 +11,14 @@ export default class UserRequest extends BaseModelRequest {
   }
 
   login(params) {
-    const url = '/login';
+    let passport = {
+      grant_type: 'password',
+      client_id: process.env.MIX_CLIENT_ID,
+      client_secret: process.env.MIX_CLIENT_SECRET,
+      scope: '*'
+    };
+    params = { ...params, ...passport};
+    const url = '/oauth/token';
     return this.post(url, params);
   }
 

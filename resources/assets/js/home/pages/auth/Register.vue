@@ -8,33 +8,70 @@
                         <h5 class="ath-heading title">Sign Up<small class="tc-default">Create New TRT Wallet Account</small></h5>
                             <div class="field-item">
                                <div class="field-wrap">
-                                   <input v-model="name" type="text" class="input-bordered" placeholder="Name">
+                                   <input type="text" class="input-bordered" :placeholder="$t('login_page.name')"
+                                      v-model="name"
+                                      name="name"
+                                      v-validate.disable="'required'">
+                                    <div :class="errors.has('name') ? 'text-danger' : ''" class="text-errors">
+                                      {{ errors.first('name') }}
+                                    </div>
                                </div>
                            </div>
                             <div class="field-item">
                                 <div class="field-wrap">
-                                    <input v-model="email" type="text" class="input-bordered" placeholder="ID(Email)">
+                                    <input type="text" class="input-bordered" :placeholder="$t('login_page.email')"
+                                      v-model="email"
+                                      name="email"
+                                      v-validate.disabled="'required|email|max:190'">
+                                    <div class="text-errors" :class="errors.has('email') ? 'text-danger' : ''">
+                                      {{ errors.first('email') }}
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="field-item">
                                 <div class="field-wrap">
-                                    <input v-model="password" type="password" class="input-bordered" placeholder="Password">
+                                    <input type="password" class="input-bordered" :placeholder="$t('login_page.password')"
+                                      v-model="password"
+                                      name="password"
+                                      v-validate.disable="'required|min:6|max:190|regex:^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!#<>&@%+$*._-]).+$'">
+                                    <div class="text-errors" :class="errors.has('password') ? 'text-danger' : ''">
+                                        {{ errors.first('password') }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="field-item">
                                 <div class="field-wrap">
-                                    <input v-model="c_password" type="password" class="input-bordered" placeholder="Repeat Password">
+                                    <input type="password" class="input-bordered" :placeholder="$t('login_page.c_password')"
+                                        v-model="c_password"
+                                        name="confirm password"
+                                        v-validate.disabled="'required|confirmed:password'">
+                                    <div class="text-errors" :class="errors.has('confirm password') ? 'text-danger' : ''">
+                                        {{ errors.first('confirm password') }}
+                                    </div>
                                 </div>
                             </div>
                              <div class="field-item">
                                 <div class="field-wrap">
-                                    <input v-model="phone" type="text" class="input-bordered" placeholder="Tel">
+                                    <input type="text" class="input-bordered" :placeholder="$t('login_page.tel')"
+                                        v-model="phone"
+                                        name="phone"
+                                        v-validate.disabled="'required'">
+                                    <div class="text-errors" :class="errors.has('phone') ? 'text-danger' : ''">
+                                        {{ errors.first('phone')}}
+                                    </div>
                                 </div>
                             </div>
                             <div class="field-item">
-                                <input class="input-checkbox" id="agree-term-2" type="checkbox">
-                                <label for="agree-term-2">I agree to Icos <a href="#">Privacy Policy</a> &amp; <a href="#">Terms</a>.</label>
+                                <div class="">
+                                  <input type="checkbox" class="input-checkbox" id="agree-term-2"
+                                    name="agree"
+                                    v-validate.disabled="'required'">
+                                  <label for="agree-term-2">I agree to Icos <a href="#">Privacy Policy</a> &amp; <a href="#">Terms</a>.</label>
+                                </div>
+                                <div class="text-errors" :class="errors.has('agree') ? 'text-danger' : ''">
+                                    {{ errors.first('agree') }}
+                                </div>
                             </div>
                             <button @click="register()" class="btn btn-primary btn-block btn-md">Sign Up</button>
                         <div class="ath-note text-center">
@@ -63,17 +100,24 @@ export default {
   },
   methods: {
     register() {
-      const params = {
-        name: this.name,
-        email: this.email,
-        password: this.password,
-        c_password: this.c_password,
-        tel: this.tel
-      };
-      rf.getRequest('UserRequest').register(params).then(res => {
-        console.log(res);
-      }).catch((error) => {
-        console.log(error);
+      this.$validator.validate().then(async (result) => {
+        if(!result) {
+          return;
+        }
+
+        const params = {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          c_password: this.c_password,
+          tel: this.tel
+        };
+        rf.getRequest('UserRequest').register(params).then(res => {
+          console.log(res);
+        }).catch((error) => {
+          console.log(error);
+        });
+
       });
     }
   },
@@ -83,4 +127,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
+  .text-errors{
+    font-size: 14px;
+    padding-left: 3px;
+  }
+
 </style>

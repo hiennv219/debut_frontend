@@ -12,6 +12,14 @@ export default {
     login: "Login",
     register: "Register",
     welcome: "The safest and most popular wallet for investing and storing cryptocurrencies",
+  },
+
+  login_page: {
+    name: "Name",
+    email: "Email",
+    password: "Password",
+    c_password: "Confirm password",
+    tel: "Phone",
   }
 
 }
