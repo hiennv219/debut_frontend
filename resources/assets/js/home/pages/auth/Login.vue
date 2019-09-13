@@ -80,12 +80,12 @@ export default {
         }
 
         const params = {
-          email: this.email,
+          username: this.email,
           password: this.password
         };
 
         rf.getRequest('UserRequest').login(params).then(res => {
-          AuthenticationUtils.saveAuthenticationData(res.data);
+          AuthenticationUtils.saveAuthenticationData(res);
           window.location.href = '/private-space';
         }).catch((error) => {
           console.log("ERROR.", error);

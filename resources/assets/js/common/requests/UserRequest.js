@@ -10,6 +10,11 @@ export default class UserRequest extends BaseModelRequest {
     return this.post(url, params);
   }
 
+  emailVerify(params) {
+    const url ='/email-verify';
+    return this.post(url, params);
+  }
+
   login(params) {
     let passport = {
       grant_type: 'password',

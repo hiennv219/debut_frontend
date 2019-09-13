@@ -20,6 +20,7 @@ export default {
     password: "Mật khẩu",
     c_password: "Mật khẩu xác nhận",
     tel: "Số điện thoại",
+    code: "Mã kích hoạt",
   }
 
 }

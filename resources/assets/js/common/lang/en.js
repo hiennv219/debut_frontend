@@ -20,6 +20,7 @@ export default {
     password: "Password",
     c_password: "Confirm password",
     tel: "Phone",
+    code: "Code",
   }
 
 }

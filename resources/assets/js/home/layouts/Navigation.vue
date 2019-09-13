@@ -7,10 +7,15 @@
           <!-- Logo @s -->
           <div class="header-logo logo">
             <a href="./" class="logo-link"> <img class="logo-dark"
+              src="images/logo-wallet.png" srcset="images/logo-wallet.png" alt="logo">
+              <img class="logo-light" src="images/logo-wallet.png"
+              srcset="images/logo-wallet.png" alt="logo">
+            </a>
+            <!-- <a href="./" class="logo-link"> <img class="logo-dark"
               src="images/beyond/logo.png" srcset="images/beyond/logo.png" alt="logo">
               <img class="logo-light" src="images/beyond/logo.png"
               srcset="images/beyond/logo.png" alt="logo">
-            </a>
+            </a> -->
           </div>
 
           <!-- Menu Toogle @s -->
