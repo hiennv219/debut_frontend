@@ -4,6 +4,7 @@ import DebutIndex from './pages/landing/DebutIndex.vue';
 import Login from './pages/auth/Login.vue';
 import Register from './pages/auth/Register.vue';
 import PrivateSpaceIndex from './pages/private/Index.vue';
+import GoogleAuthenticator from './pages/account/GoogleAuthenticator.vue';
 
 export default {
   mode: 'history',
@@ -38,6 +39,13 @@ export default {
         {
           path: '/private-space',
           component: PrivateSpaceIndex,
+          meta: {
+            requiresAuth: true
+          }
+        },
+        {
+          path: '/google-authenticator',
+          component: GoogleAuthenticator,
           meta: {
             requiresAuth: true
           }

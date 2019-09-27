@@ -27,4 +27,14 @@ export default class UserRequest extends BaseModelRequest {
     return this.post(url, params);
   }
 
+  getInformartion(params) {
+    const url ='/users';
+    return this.get(url, params);
+  }
+
+  generalQrCode(params) {
+    const url ='/general-qr-code';
+    return this.get(url, params);
+  }
+
 }
