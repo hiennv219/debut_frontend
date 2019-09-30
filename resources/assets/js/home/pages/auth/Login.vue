@@ -4,7 +4,7 @@
 			<div class="container">
 				<div class="nk-blocks d-flex justify-content-center">
 					<div class="ath-container m-0">
-						<div class="ath-body">
+						<div class="ath-body" v-show="tab === 1">
 							<h5 class="ath-heading title">
 								Sign In<small class="tc-default">with your TRT Wallet</small>
 							</h5>
@@ -55,6 +55,27 @@
 										up here</strong></a>
 							</div>
 						</div>
+						<div class="ath-body" v-if="tab === 2">
+							<h5 class="ath-heading title">
+								Google Authentication
+							</h5>
+              <div class="field-item">
+                <div class="field-wrap">
+                  <input type="text" class="input-bordered" :placeholder="$t('login_page.code')"
+                    v-model="otp"
+                    name="otp"
+                    @focus="clearErrors"
+                    @keyup.enter="confirmOTP"
+                    maxlength="6"
+                    data-vv-scope="google_otp"
+                    v-validate.disable="'required|regex:^([0-9]{6})$'">
+                  <div :class="errors.has('otp') ? 'text-danger' : ''" class="text-errors">
+                    {{ errors.first('otp') }}
+                  </div>
+                </div>
+              </div>
+              <button @click="confirmOTP" class="btn btn-primary btn-block btn-md">Confirm</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -71,10 +92,30 @@ export default {
     return {
       email: '',
       password: '',
-      remenber: ''
+      remenber: '',
+      tab: 1,
+      otp: ''
     }
   },
   methods: {
+    clearErrors() {
+      this.errors.clear();
+    },
+    confirmOTP() {
+      this.$validator.validate().then(async (result) => {
+        if(!result) {
+          return;
+        }
+
+        const params = {
+          username: this.email,
+          otp: this.otp
+        };
+        rf.getRequest('UserRequest').confirmOTP(params).then(res => {
+          console.log(res);
+        });
+      });
+    },
     login() {
       this.$validator.validate().then(async (result) => {
         if (!result) {
@@ -90,7 +131,15 @@ export default {
           AuthenticationUtils.saveAuthenticationData(res);
           window.location.href = '/private-space';
         }).catch((error) => {
-          console.log("ERROR.", error);
+
+          //Enable OTP
+          window._.forOwn(error.response.data.errors, (message, field) => {
+            console.log(field);
+            if(field == 'otp') {
+              this.tab = 2;
+            }
+          });
+
         });
       });
 

@@ -15,6 +15,11 @@ export default class UserRequest extends BaseModelRequest {
     return this.post(url, params);
   }
 
+  otpVerify(params) {
+    const url = '/otp-verify';
+    return this.post(url, params);
+  }
+
   login(params) {
     let passport = {
       grant_type: 'password',
@@ -37,8 +42,8 @@ export default class UserRequest extends BaseModelRequest {
     return this.get(url, params);
   }
 
-  otpVerify(params) {
-    const url = '/otp-verify';
+  confirmOTP(params) {
+    const url = '/confirm-otp';
     return this.post(url, params);
   }
 
