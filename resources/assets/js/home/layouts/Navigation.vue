@@ -32,11 +32,20 @@
             <nav class="header-menu" id="header-menu">
               <ul class="menu">
 
-                <li class="menu-item"><a href="/private-space">Private Space</a></li>
-                <li class="menu-item"><a href="/google-authenticator">OTP</a></li>
+                <li class="menu-item" v-if="isAuthenticated">
+                  <a class="menu-link nav-link menu-toggle" href="#">Account</a>
+                  <div class="menu-sub menu-drop menu-mega menu-mega-2clmn">
+                    <div class="menu-mega-innr">
+                      <ul class="menu-mega-list">
+                        <li class="menu-item"><a href="/private-space">Private Space</a> </li>
+                        <li class="menu-item"><a href="/google-authenticator">OTP</a> </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
 
-                <li class="menu-item"><a
-                  class="menu-link nav-link menu-toggle" href="#">Language</a>
+                <li class="menu-item">
+                  <a class="menu-link nav-link menu-toggle" href="#">Language</a>
                   <div class="menu-sub menu-drop menu-mega menu-mega-2clmn">
                     <div class="menu-mega-innr">
                       <ul class="menu-mega-list">
@@ -45,7 +54,18 @@
                         </li>
                       </ul>
                     </div>
-                  </div></li>
+                  </div>
+                </li>
+
+                <li class="menu-item" v-if="isAuthenticated">
+                  <a class="menu-link nav-link menu-toggle" href="#"  @click="logout()">Logout</a>
+                </li>
+
+                <li class="menu-item" v-else>
+                  <router-link to="/login" class="menu-link nav-link menu-toggle" >
+                    {{ $t('index_page.login') }}
+                  </router-link>
+                </li>
               </ul>
             </nav>
           </div>
@@ -64,7 +84,7 @@
 <script>
 import { mapState } from 'vuex';
 import Utils from 'common/lib/Utils';
-
+import AuthenticationUtils from 'common/AuthenticationUtils';
 
 export default {
   name: 'Navigation',
@@ -73,13 +93,17 @@ export default {
   },
   data() {
     return {
-
+      isAuthenticated: AuthenticationUtils.isAuthenticated()
     }
   },
   computed: {
     ...mapState(['supportedLocales']),
   },
   methods: {
+    logout() {
+      AuthenticationUtils.removeAuthenticationData();
+      window.location.href = '/';
+    },
     updateUserLocale(locale) {
       Utils.setI18nLocale(locale);
     }
