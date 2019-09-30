@@ -37,4 +37,9 @@ export default class UserRequest extends BaseModelRequest {
     return this.get(url, params);
   }
 
+  otpVerify(params) {
+    const url = '/otp-verify';
+    return this.post(url, params);
+  }
+
 }

@@ -32,6 +32,9 @@
             <nav class="header-menu" id="header-menu">
               <ul class="menu">
 
+                <li class="menu-item"><a href="/private-space">Private Space</a></li>
+                <li class="menu-item"><a href="/google-authenticator">OTP</a></li>
+
                 <li class="menu-item"><a
                   class="menu-link nav-link menu-toggle" href="#">Language</a>
                   <div class="menu-sub menu-drop menu-mega menu-mega-2clmn">

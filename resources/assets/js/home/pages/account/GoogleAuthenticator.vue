@@ -22,13 +22,15 @@
                       v-model="code"
                       name="code"
                       @focus="clearErrors"
+                      @keyup.enter="otpVerify"
+                      maxlength="6"
                       v-validate.disable="'required|regex:^([0-9]{6})$'">
                     <div :class="errors.has('code') ? 'text-danger' : ''" class="text-errors">
                       {{ errors.first('code') }}
                     </div>
                   </div>
                 </div>
-                <button @click="otpVerify()" class="btn btn-primary btn-block btn-md">Confirm</button>
+                <button @click="otpVerify" class="btn btn-primary btn-block btn-md">Confirm</button>
 
                 <div class="field-wrap guide">
                   <img src="images/otp.png" alt="" class="otp-guide">
@@ -62,11 +64,23 @@ export default {
       this.errors.clear();
     },
     otpVerify() {
+      this.$validator.validate().then(async (result) => {
+        if(!result) {
+          return;
+        }
 
+        const params = {
+          code: this.code
+        };
+        rf.getRequest('UserRequest').otpVerify(params).then(res => {
+          
+        });
+      });
     },
     generalQrCode() {
       rf.getRequest('UserRequest').generalQrCode().then(res => {
         this.QrCode = res;
+        console.log(res);
       });
     }
   },
