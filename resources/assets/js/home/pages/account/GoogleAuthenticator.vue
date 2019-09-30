@@ -95,7 +95,7 @@ export default {
 }
 .guide {
   margin-top: 15px;
-  padding: 8px;
+  padding: 15px;
   background: #e3f5f5;
   border-radius: 3px;
   overflow: overlay;

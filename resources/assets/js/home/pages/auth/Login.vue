@@ -15,6 +15,7 @@
                       name="email"
                       :class="errors.has('email') ? 'is-invalid': ''"
                       type="text" class="input-bordered"
+                      @keyup.enter="login"
 											placeholder="Your Email">
 									</div>
                   <div :class="errors.has('email') ? 'text-danger' : ''" class="warning-message" >
@@ -28,6 +29,7 @@
                       name="password"
                       :class="errors.has('email') ? 'is-invalid': ''"
                       type="password" class="input-bordered"
+                      @keyup.enter="login"
 											placeholder="Password">
 									</div>
                   <div :class="errors.has('password') ? 'text-danger' : ''" class="warning-message" >
