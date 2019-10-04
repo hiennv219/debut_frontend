@@ -42,9 +42,5 @@ export default class UserRequest extends BaseModelRequest {
     return this.get(url, params);
   }
 
-  confirmOTP(params) {
-    const url = '/confirm-otp';
-    return this.post(url, params);
-  }
 
 }

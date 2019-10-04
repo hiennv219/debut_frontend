@@ -65,7 +65,7 @@
                     v-model="otp"
                     name="otp"
                     @focus="clearErrors"
-                    @keyup.enter="confirmOTP"
+                    @keyup.enter="login"
                     maxlength="6"
                     data-vv-scope="google_otp"
                     v-validate.disable="'required|regex:^([0-9]{6})$'">
@@ -74,7 +74,7 @@
                   </div>
                 </div>
               </div>
-              <button @click="confirmOTP" class="btn btn-primary btn-block btn-md">Confirm</button>
+              <button @click="login" class="btn btn-primary btn-block btn-md">Confirm</button>
 						</div>
 					</div>
 				</div>
@@ -101,21 +101,6 @@ export default {
     clearErrors() {
       this.errors.clear();
     },
-    confirmOTP() {
-      this.$validator.validate().then(async (result) => {
-        if(!result) {
-          return;
-        }
-
-        const params = {
-          username: this.email,
-          otp: this.otp
-        };
-        rf.getRequest('UserRequest').confirmOTP(params).then(res => {
-          console.log(res);
-        });
-      });
-    },
     login() {
       this.$validator.validate().then(async (result) => {
         if (!result) {
@@ -124,18 +109,20 @@ export default {
 
         const params = {
           username: this.email,
-          password: this.password
+          password: this.password,
+          otp: this.otp
         };
 
         rf.getRequest('UserRequest').login(params).then(res => {
           AuthenticationUtils.saveAuthenticationData(res);
+          this.getMessage("Success!");
           window.location.href = '/private-space';
         }).catch((error) => {
 
           //Enable OTP
           window._.forOwn(error.response.data.errors, (message, field) => {
             console.log(field);
-            if(field == 'otp') {
+            if(field == 'otp') { //If user have used OTP then active login again
               this.tab = 2;
             }
           });
@@ -143,15 +130,17 @@ export default {
         });
       });
 
+    },
+    getMessage(msg) {
+      this.$toasted.show("welcome to login page", {
+      	 theme: "toasted-primary",
+      	 position: "top-right",
+      	 duration : 1000,
+      });
     }
   },
   mounted() {
-    //do something after mounting vue instance
-    this.$toasted.show("welcome to login page", {
-    	 theme: "toasted-primary",
-    	 position: "top-right",
-    	 duration : 1000,
-    });
+    this.getMessage("welcome to login page");
 
     this.$on('UserSessionRegistered', (data) => {
       console.log("UserSessionRegistered", data);
