@@ -4,8 +4,8 @@
 				<div class="nk-blocks d-flex justify-content-center">
 					<div class="otp-middle m-0">
             <div class="ath-body">
-                <h5 class="ath-heading title">Google Authenticator</h5>
-                <div class="field-item">
+                <h5 class="ath-heading title">{{ titleForm }}</h5>
+                <div class="field-item" v-if="securityLevel === 1">
                   <div class="field-wrap qrcode">
                     <img :src="QrCode" alt="" class="img-qr">
                     <div class="">
@@ -56,8 +56,18 @@ export default {
   data() {
     return {
       QrCode: '',
-      code: ''
+      code: '',
+      isAuthenticated: window.isAuthenticated,
+      securityLevel: 1,
     }
+  },
+  computed: {
+    titleForm() {
+      if(this.securityLevel >= 2) {
+        return "Disable Google Authenticator";
+      }
+      return "Google Authenticator";
+    },
   },
   methods: {
     clearErrors() {
@@ -72,20 +82,38 @@ export default {
         const params = {
           code: this.code
         };
-        rf.getRequest('UserRequest').otpVerify(params).then(res => {
-          
-        });
+
+        if(this.securityLevel == 1) {
+          rf.getRequest('UserRequest').otpVerify(params).then(res => {
+
+          });
+        }else {
+          rf.getRequest('UserRequest').disableOtp(params).then(res => {
+
+          });
+        }
       });
     },
     generalQrCode() {
       rf.getRequest('UserRequest').generalQrCode().then(res => {
         this.QrCode = res;
-        console.log(res);
       });
+    },
+    getInformartion() {
+      return rf.getRequest('UserRequest').getInformartion().then(res => {
+        this.securityLevel = res.data.security_level;
+      });
+    },
+    init() {
+      this.getInformartion();
+
+      if(this.securityLevel === 1) {
+        this.generalQrCode();
+      }
     }
   },
   mounted() {
-    this.generalQrCode();
+    this.init();
   }
 }
 </script>

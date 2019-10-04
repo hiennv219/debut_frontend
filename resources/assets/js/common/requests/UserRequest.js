@@ -20,6 +20,11 @@ export default class UserRequest extends BaseModelRequest {
     return this.post(url, params);
   }
 
+  disableOtp(params) {
+    const url = '/disable-otp';
+    return this.post(url, params);
+  }
+
   login(params) {
     let passport = {
       grant_type: 'password',
@@ -33,7 +38,7 @@ export default class UserRequest extends BaseModelRequest {
   }
 
   getInformartion(params) {
-    const url ='/users';
+    const url ='/user';
     return this.get(url, params);
   }
 
