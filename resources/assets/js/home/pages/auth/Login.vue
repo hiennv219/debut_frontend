@@ -4,38 +4,56 @@
 			<div class="container">
 				<div class="nk-blocks d-flex justify-content-center">
 					<div class="ath-container m-0">
-						<div class="ath-body" v-show="tab === 1">
-							<h5 class="ath-heading title">
-								Sign In<small class="tc-default">with your TRT Wallet</small>
-							</h5>
-								<div class="field-item">
-									<div class="field-wrap">
-										<input v-model="email"
-                      v-validate.disable="'required|email|max:190'"
-                      name="email"
-                      :class="errors.has('email') ? 'is-invalid': ''"
-                      type="text" class="input-bordered"
-                      @keyup.enter="login"
-											placeholder="Your Email">
-									</div>
-                  <div :class="errors.has('email') ? 'text-danger' : ''" class="warning-message" >
-                    <span>{{ errors.first('email') }}</span>
-                  </div>
+						<div class="ath-body">
+							<h5 class="ath-heading title">{{ titleForm }}</h5>
+                <div v-show="step === 1">
+  								<div class="field-item">
+  									<div class="field-wrap">
+  										<input v-model="email"
+                        v-validate.disable="'required|email|max:190'"
+                        name="email"
+                        :class="errors.has('email') ? 'is-invalid': ''"
+                        type="text" class="input-bordered"
+                        @keyup.enter="login"
+  											placeholder="Your Email">
+  									</div>
+                    <div :class="errors.has('email') ? 'text-danger' : ''" class="warning-message" >
+                      <span>{{ errors.first('email') }}</span>
+                    </div>
+  								</div>
+  								<div class="field-item">
+  									<div class="field-wrap">
+  										<input v-model="password"
+                        v-validate.disabled="'required|max:190'"
+                        name="password"
+                        :class="errors.has('email') ? 'is-invalid': ''"
+                        type="password" class="input-bordered"
+                        @keyup.enter="login"
+  											placeholder="Password">
+  									</div>
+                    <div :class="errors.has('password') ? 'text-danger' : ''" class="warning-message" >
+                      <span>{{ errors.first('password') }}</span>
+                    </div>
+  								</div>
 								</div>
-								<div class="field-item">
-									<div class="field-wrap">
-										<input v-model="password"
-                      v-validate.disabled="'required|max:190'"
-                      name="password"
-                      :class="errors.has('email') ? 'is-invalid': ''"
-                      type="password" class="input-bordered"
-                      @keyup.enter="login"
-											placeholder="Password">
-									</div>
-                  <div :class="errors.has('password') ? 'text-danger' : ''" class="warning-message" >
-                    <span>{{ errors.first('password') }}</span>
+                <div v-if="step === 2">
+                  <div class="field-item">
+                    <div class="field-wrap">
+                      <input type="text" class="input-bordered" :placeholder="$t('login_page.code')"
+                        v-model="otp"
+                        name="otp"
+                        @focus="clearErrors"
+                        @keyup.enter="login"
+                        maxlength="6"
+                        data-vv-scope="google_otp"
+                        v-validate.disable="'required|regex:^([0-9]{6})$'">
+                      <div :class="errors.has('otp') ? 'text-danger' : ''" class="text-errors">
+                        {{ errors.first('otp') }}
+                      </div>
+                    </div>
                   </div>
-								</div>
+    						</div>
+
 								<div
 									class="field-item d-flex justify-content-between align-items-center">
 									<div class="field-item pb-0">
@@ -55,27 +73,7 @@
 										up here</strong></a>
 							</div>
 						</div>
-						<div class="ath-body" v-if="tab === 2">
-							<h5 class="ath-heading title">
-								Google Authentication
-							</h5>
-              <div class="field-item">
-                <div class="field-wrap">
-                  <input type="text" class="input-bordered" :placeholder="$t('login_page.code')"
-                    v-model="otp"
-                    name="otp"
-                    @focus="clearErrors"
-                    @keyup.enter="login"
-                    maxlength="6"
-                    data-vv-scope="google_otp"
-                    v-validate.disable="'required|regex:^([0-9]{6})$'">
-                  <div :class="errors.has('otp') ? 'text-danger' : ''" class="text-errors">
-                    {{ errors.first('otp') }}
-                  </div>
-                </div>
-              </div>
-              <button @click="login" class="btn btn-primary btn-block btn-md">Confirm</button>
-						</div>
+
 					</div>
 				</div>
 			</div>
@@ -90,10 +88,11 @@ import AuthenticationUtils from 'common/AuthenticationUtils';
 export default {
   data() {
     return {
+      titleForm: 'Sign In',
       email: '',
       password: '',
       remenber: '',
-      tab: 1,
+      step: 1,
       otp: ''
     }
   },
@@ -123,7 +122,8 @@ export default {
           window._.forOwn(error.response.data.errors, (message, field) => {
             console.log(field);
             if(field == 'otp') { //If user have used OTP then active login again
-              this.tab = 2;
+              this.step = 2;
+              this.titleForm = 'Google Authentication';
             }
           });
 
