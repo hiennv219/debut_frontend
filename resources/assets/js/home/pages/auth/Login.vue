@@ -118,13 +118,20 @@ export default {
           window.location.href = '/private-space';
         }).catch((error) => {
 
-          //Enable OTP
           window._.forOwn(error.response.data.errors, (message, field) => {
-            console.log(field);
-            if(field == 'otp') { //If user have used OTP then active login again
+
+            //Enable OTP: If user have used OTP then active login again
+            if(field == 'otp') {
               this.step = 2;
               this.titleForm = 'Google Authentication';
+              return;
             }
+
+            this.$validator.errors.add({
+              field: field,
+              msg: message[0],
+            });
+
           });
 
         });
