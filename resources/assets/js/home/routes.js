@@ -1,9 +1,9 @@
 import BasePage from './components/BasePage.vue';
 import LangdingPage from './pages/landing/Index.vue';
-import DebutIndex from './pages/landing/DebutIndex.vue';
 import Login from './pages/auth/Login.vue';
 import Register from './pages/auth/Register.vue';
 import PrivateSpaceIndex from './pages/private/Index.vue';
+import GoogleAuthenticator from './pages/account/GoogleAuthenticator.vue';
 
 export default {
   mode: 'history',
@@ -29,15 +29,15 @@ export default {
           name: 'Register'
         },
         {
-          path: '/homie',
-          component: DebutIndex,
+          path: '/private-space',
+          component: PrivateSpaceIndex,
           meta: {
             requiresAuth: true
           }
         },
         {
-          path: '/private-space',
-          component: PrivateSpaceIndex,
+          path: '/google-authenticator',
+          component: GoogleAuthenticator,
           meta: {
             requiresAuth: true
           }

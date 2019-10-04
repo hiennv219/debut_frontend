@@ -3,15 +3,6 @@
       <h2 class="text-center title-home-page">Private Space</h2>
       <p class="text-center text-gray">{{ $t('index_page.welcome') }}</p>
 
-      <div class="text-center">
-        <router-link to="/login" class="btn btn-primary">
-          {{ $t('index_page.login') }}
-        </router-link>
-        <router-link to="/register" class="btn btn-success">
-          {{ $t('index_page.register') }}
-        </router-link>
-      </div>
-
   </div>
 </template>
 
@@ -19,7 +10,7 @@
 import {mapState, mapGetters } from 'vuex';
 
 export default {
-  name: 'IndexPage',
+  name: 'PrivateSpace',
   computed: {
     ...mapState(['appTitle'])
   },
