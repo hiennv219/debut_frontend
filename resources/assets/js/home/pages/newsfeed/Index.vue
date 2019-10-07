@@ -1,59 +1,21 @@
 <template>
-  <div class="">
-
-    <button type="button" class="take-note" data-toggle="modal" data-target="#exampleModal" title="Take a note">
-      +
-    </button>
-
-
-      <div class="posts">
-        <div class="post">
-          <h3 class="title">Bitcoin Price (BTC) Extending Decline Below Key Support</h3>
-          <span class="text-muted time">2019-10-07 17:30</span>
-          <p>In the past few days, there was a steady decline in bitcoin form the $8,500 resistence against the US Dollar.
-          The BTC/USD pair broke many support near $83,00 and $8,200 to enter a bearish zone.
-          Moreover, there was a close below the $8,200 level and the 100 hourly simple moving averge.
-          Recently, the bears gained traction and they were successful in pushing the price below the $8,000 support area.</p>
-        </div>
-        <div class="post">
-          <h3 class="title">Bitcoin Price Analysis</h3>
-          <span class="text-muted time">2019-10-07 17:30</span>
-          <p>Bitcoin price is currently declining and is trading well below $8,000 against the US Dollar.</p>
-            <p>The price is struggling to recover and it looks set to decline further towards the $7,500 support.</p>
-            <p>There is a crucial declining channel forming with resistance near the $8,050 level on the hourly chart of the BTC/USD pair (data feed from Kraken).</p>
-            <p>The price is likely to accelerate decline below the $7,800 and $7,750 levels in the near term.</p>
-            <p>Bitcoin price is showing bearish signs below $8,000 against the US Dollar. BTC remains at a risk of an extended decline towards the $7,500 weekly target.</p>
-        </div>
-      </div>
-
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+  <div class="news">
+    <note></note>
+    <create-note></create-note>
   </div>
 </template>
 
 <script>
 import {mapState, mapGetters } from 'vuex';
+import Note from './Note';
+import CreateNote from '../common/CreateNote';
 
 export default {
-  name: 'PrivateSpace',
+  name: 'NewsFeed',
+  components: {
+    Note,
+    CreateNote
+  },
   computed: {
     ...mapState([
       'appTitle',
@@ -67,54 +29,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.title-home-page{
-  margin-top: 50px;
-}
-
-.posts {
-  padding: 50px;
-  .post{
-    background: #fff;
-    border-radius: 8px;
-    border: 1px solid #cdcdcd;
-    width: 90%;
-    margin-bottom: 50px;
-    padding: 1rem 15px;
-
-    .title{
-      font-size: 1.25rem;
-      margin-bottom: 0.7rem;
-    }
-    .time{
-      font-size: 0.9rem;
-    }
-
-    p{
-      font-size: 1.1rem;
-    }
-  }
-  .post:nth-child(even) {
-    float: right;
-  }
-}
-
-.take-note{
-  background-color: #23c99d;
-  border-color: #23c99d;
-  font-size: 13px;
-  border-radius: 100%;
-  height: 45px;
-  width: 45px;
-  position: fixed;
-  top: 120px;
-  left: 20px;
-  color: #fff;
-  font-weight: bold;
-
-  &:hover{
-    background-color: #16a3fe;
-    border-color: #16a3fe;
-  }
-}
-
 </style>
