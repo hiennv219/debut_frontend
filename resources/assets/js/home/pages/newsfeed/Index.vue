@@ -1,5 +1,11 @@
 <template>
   <div class="">
+
+    <button type="button" class="take-note" data-toggle="modal" data-target="#exampleModal" title="Take a note">
+      +
+    </button>
+
+
       <div class="posts">
         <div class="post">
           <h3 class="title">Bitcoin Price (BTC) Extending Decline Below Key Support</h3>
@@ -17,6 +23,26 @@
             <p>There is a crucial declining channel forming with resistance near the $8,050 level on the hourly chart of the BTC/USD pair (data feed from Kraken).</p>
             <p>The price is likely to accelerate decline below the $7,800 and $7,750 levels in the near term.</p>
             <p>Bitcoin price is showing bearish signs below $8,000 against the US Dollar. BTC remains at a risk of an extended decline towards the $7,500 weekly target.</p>
+        </div>
+      </div>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -71,4 +97,24 @@ export default {
     float: right;
   }
 }
+
+.take-note{
+  background-color: #23c99d;
+  border-color: #23c99d;
+  font-size: 13px;
+  border-radius: 100%;
+  height: 45px;
+  width: 45px;
+  position: fixed;
+  top: 120px;
+  left: 20px;
+  color: #fff;
+  font-weight: bold;
+
+  &:hover{
+    background-color: #16a3fe;
+    border-color: #16a3fe;
+  }
+}
+
 </style>
