@@ -17,17 +17,31 @@
             <div class="modal-body">
                 <div class="form-group">
                   <label for="">Title</label>
-                  <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
-                  <small class="form-text text-muted">Thanks for your share.</small>
+                  <input type="text" class="form-control" placeholder="About the issue"
+                    v-model="title"
+                    name="title"
+                    @focus="clearErrors"
+                    v-validate.disabled="'required'">
+                  <small class="form-text" :class="errors.has('title') ? 'text-danger' : ''">
+                    {{ errors.first('title') }}
+                  </small>
+
                 </div>
                 <div class="form-group">
                   <label for="">Content</label>
-                  <textarea class="form-control" placeholder="Take a note..." rows="15"></textarea>
+                  <textarea type="text" class="form-control" placeholder="Take a note..." rows="15"
+                    v-model="content"
+                    name="content"
+                    @focus="clearErrors"
+                    v-validate.disabled="'required'"></textarea>
+                    <small class="form-text" :class="errors.has('content') ? 'text-danger' : ''">
+                      {{ errors.first('content') }}
+                    </small>
                 </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Realese</button>
+              <button type="button" class="btn btn-primary" @click="release">Release</button>
             </div>
           </div>
         </div>
@@ -37,12 +51,44 @@
 </template>
 
 <script>
+import rf from 'common/requests/RequestFactory.js';
+
 export default {
+  data() {
+    return {
+      title: '',
+      content: '',
+      private: 0,
+    }
+  },
+  methods: {
+    clearErrors() {
+      this.errors.clear();
+    },
+    release() {
+      this.$validator.validate().then(async (result) => {
+        if(!result) {
+          return;
+        }
+
+        const params = {
+          title: this.title,
+          content: this.content,
+          private: this.private,
+        };
+        rf.getRequest('NoteRequest').create(params).then(res => {
+          console.log(res);
+        }).catch((error) => {
+
+        });
+
+      });
+    },
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-
   .take-note{
     background-color: #23c99d;
     border-color: #23c99d;

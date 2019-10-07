@@ -1,27 +1,33 @@
 <template>
   <div class="posts">
-    <div class="post">
-      <h3 class="title">Bitcoin Price (BTC) Extending Decline Below Key Support</h3>
-      <span class="text-muted time">2019-10-07 17:30</span>
-      <p>In the past few days, there was a steady decline in bitcoin form the $8,500 resistence against the US Dollar.
-      The BTC/USD pair broke many support near $83,00 and $8,200 to enter a bearish zone.
-      Moreover, there was a close below the $8,200 level and the 100 hourly simple moving averge.
-      Recently, the bears gained traction and they were successful in pushing the price below the $8,000 support area.</p>
-    </div>
-    <div class="post">
-      <h3 class="title">Bitcoin Price Analysis</h3>
-      <span class="text-muted time">2019-10-07 17:30</span>
-      <p>Bitcoin price is currently declining and is trading well below $8,000 against the US Dollar.</p>
-        <p>The price is struggling to recover and it looks set to decline further towards the $7,500 support.</p>
-        <p>There is a crucial declining channel forming with resistance near the $8,050 level on the hourly chart of the BTC/USD pair (data feed from Kraken).</p>
-        <p>The price is likely to accelerate decline below the $7,800 and $7,750 levels in the near term.</p>
-        <p>Bitcoin price is showing bearish signs below $8,000 against the US Dollar. BTC remains at a risk of an extended decline towards the $7,500 weekly target.</p>
+    <div class="post" v-for="note in notes">
+      <h3 class="title">{{ note.title }}</h3>
+      <span class="text-muted time">{{ note.updated_at }}</span>
+      <p>{{ note.content }}</p>
     </div>
   </div>
 </template>
 
 <script>
+import rf from 'common/requests/RequestFactory.js';
 export default {
+  data() {
+    return {
+      notes: {},
+    }
+  },
+  methods: {
+    getNotes() {
+        rf.getRequest('NoteRequest').getLists().then(res => {
+          this.notes = res.data;
+        }).catch((error) => {
+
+        });
+    },
+  },
+  mounted() {
+    this.getNotes();
+  }
 }
 </script>
 
