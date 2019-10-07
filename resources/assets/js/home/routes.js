@@ -3,6 +3,7 @@ import LangdingPage from './pages/landing/Index.vue';
 import Login from './pages/auth/Login.vue';
 import Register from './pages/auth/Register.vue';
 import PrivateSpaceIndex from './pages/private/Index.vue';
+import NewsFeedIndex from './pages/newsfeed/Index.vue';
 import GoogleAuthenticator from './pages/account/GoogleAuthenticator.vue';
 
 export default {
@@ -31,6 +32,13 @@ export default {
         {
           path: '/private-space',
           component: PrivateSpaceIndex,
+          meta: {
+            requiresAuth: true
+          }
+        },
+        {
+          path: '/newsfeed',
+          component: NewsFeedIndex,
           meta: {
             requiresAuth: true
           }

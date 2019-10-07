@@ -115,7 +115,7 @@ export default {
         rf.getRequest('UserRequest').login(params).then(res => {
           AuthenticationUtils.saveAuthenticationData(res);
           this.getMessage("Success!");
-          window.location.href = '/private-space';
+          window.location.href = '/newsfeed';
         }).catch((error) => {
 
           window._.forOwn(error.response.data.errors, (message, field) => {
