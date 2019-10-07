@@ -37,6 +37,7 @@
                   <div class="menu-sub menu-drop menu-mega menu-mega-2clmn">
                     <div class="menu-mega-innr">
                       <ul class="menu-mega-list">
+                        <li class="menu-item"><a class="btn btn-primary">{{ user.email | getUserName }}</a></li>
                         <li class="menu-item"><a href="/private-space">Private Space</a> </li>
                         <li class="menu-item"><a href="/google-authenticator">OTP</a> </li>
                       </ul>
@@ -82,7 +83,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import Utils from 'common/lib/Utils';
 import AuthenticationUtils from 'common/AuthenticationUtils';
 
@@ -97,7 +98,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['supportedLocales']),
+    ...mapState(['supportedLocales', 'user']),
   },
   methods: {
     logout() {
@@ -107,6 +108,9 @@ export default {
     updateUserLocale(locale) {
       Utils.setI18nLocale(locale);
     }
+  },
+  mounted() {
+    this.$store.dispatch('getCurrentUser');
   }
 }
 </script>
