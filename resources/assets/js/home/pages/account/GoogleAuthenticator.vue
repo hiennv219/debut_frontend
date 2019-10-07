@@ -51,13 +51,15 @@ import AuthenticationUtils from 'common/AuthenticationUtils';
 export default {
   name: 'GoogleAuthenticator',
   computed: {
-    ...mapState(['appTitle'])
+    ...mapState([
+      'appTitle',
+      'isAuthenticated',
+    ])
   },
   data() {
     return {
       QrCode: '',
       code: '',
-      isAuthenticated: window.isAuthenticated,
       securityLevel: 1,
     }
   },

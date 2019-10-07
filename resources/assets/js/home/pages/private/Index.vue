@@ -12,7 +12,10 @@ import {mapState, mapGetters } from 'vuex';
 export default {
   name: 'PrivateSpace',
   computed: {
-    ...mapState(['appTitle'])
+    ...mapState([
+      'appTitle',
+      'isAuthenticated',
+    ])
   },
   mounted() {
 

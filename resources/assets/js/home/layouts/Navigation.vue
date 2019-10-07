@@ -94,11 +94,14 @@ export default {
   },
   data() {
     return {
-      isAuthenticated: AuthenticationUtils.isAuthenticated()
     }
   },
   computed: {
-    ...mapState(['supportedLocales', 'user']),
+    ...mapState([
+      'supportedLocales',
+      'isAuthenticated',
+      'user',
+    ]),
   },
   methods: {
     logout() {
@@ -110,7 +113,9 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('getCurrentUser');
+    if(this.isAuthenticated) {
+      this.$store.dispatch('getCurrentUser');
+    }
   }
 }
 </script>
