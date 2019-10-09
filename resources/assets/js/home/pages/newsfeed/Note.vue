@@ -3,7 +3,7 @@
     <div class="post" v-for="note in notes">
       <h3 class="title">{{ note.title }}</h3>
       <span class="text-muted time">{{ note.updated_at }}</span>
-      <p>{{ note.content }}</p>
+      <p v-html="note.content"></p>
     </div>
   </div>
 </template>
@@ -17,12 +17,21 @@ export default {
     }
   },
   methods: {
+    getSocketEventHandlers() {
+      return {
+        NoteUpdated: this.onReceiveNote
+      }
+    },
+    onReceiveNote(data) {
+      // console.log(data);
+      this.notes = _.concat(this.note, data.data);
+    },
     getNotes() {
-        rf.getRequest('NoteRequest').getLists().then(res => {
-          this.notes = res.data;
-        }).catch((error) => {
+      rf.getRequest('NoteRequest').getLists().then(res => {
+        this.notes = res.data;
+      }).catch((error) => {
 
-        });
+      });
     },
   },
   mounted() {
@@ -56,6 +65,9 @@ export default {
     }
     .post:nth-child(even) {
       float: right;
+    }
+    .post:nth-child(odd) {
+      float: left;
     }
   }
 

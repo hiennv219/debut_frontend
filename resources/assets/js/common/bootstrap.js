@@ -69,7 +69,7 @@ Vue.use(VueI18n);
 
 window.Echo = new Echo({
   broadcaster: 'socket.io',
-  host: ECHO_URL + ':6001',
+  host: ECHO_URL,
   authe: {
     headers: {
       Authorization: `Bearer ${AuthenticationUtils.getAccessToken()}`,
