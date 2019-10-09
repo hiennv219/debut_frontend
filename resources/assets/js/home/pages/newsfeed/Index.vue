@@ -2,19 +2,29 @@
   <div class="news">
     <note></note>
     <create-note></create-note>
+    <toast :message="notify"></toast>
   </div>
 </template>
 
 <script>
 import {mapState, mapGetters } from 'vuex';
+import rf from 'common/requests/RequestFactory.js';
 import Note from './Note';
 import CreateNote from '../common/CreateNote';
+import Toast from '../common/Toast';
 
 export default {
   name: 'NewsFeed',
   components: {
     Note,
-    CreateNote
+    CreateNote,
+    Toast
+  },
+  data() {
+    return {
+      isShow: false,
+      notify: "",
+    }
   },
   computed: {
     ...mapState([
@@ -22,8 +32,23 @@ export default {
       'isAuthenticated',
     ])
   },
-  mounted() {
+  methods: {
+    getSocketEventHandlers() {
+      return {
+        NoteUpdated: this.onReceiveNote
+      }
+    },
+    onReceiveNote(data) {
+      this.isShow = true;
+      this.notify = "New Note of anonymous user: \"" + data.title + "\"";
+    },
+    getNotes() {
+      rf.getRequest('NoteRequest').getLists().then(res => {
+        this.notes = res.data;
+      }).catch((error) => {
 
+      });
+    },
   }
 }
 </script>

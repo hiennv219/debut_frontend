@@ -38,9 +38,10 @@ export default class GlobalSocket {
   }
 
   listenForNote() {
-    window.Echo.channel('app.public')
-                .listen('NoteUpdated', (res) => {
-                  window.app.$broadcast('NoteUpdated', res);
-                });
+    window.Echo
+          .channel('app.public')
+          .listen('NoteUpdated', (res) => {
+            window.app.$broadcast('NoteUpdated', res.data);
+          });
   }
 }

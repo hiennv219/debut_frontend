@@ -14,6 +14,7 @@ import GlobalSocket from './GlobalSocket';
 import AuthenticationUtils from 'common/AuthenticationUtils';
 
 import VeeValidate, { Validator } from 'vee-validate';
+import Vue2Editor from "vue2-editor";
 // import VTooltip from 'v-tooltip';
 // import VueLoading from 'vue-loading-template';
 // import FullScreen from 'vue-fullscreen';
@@ -32,6 +33,7 @@ Vue.use(VueBroadcast);
 
 // Vue.component(VueQrcode.name, VueQrcode);
 Vue.use(VeeValidate);
+Vue.use(Vue2Editor);
 // Vue.use(VTooltip);
 Vue.use(Toasted);
 // Vue.use(VModal);

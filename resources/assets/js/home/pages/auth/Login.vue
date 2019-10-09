@@ -86,6 +86,7 @@ import rf from 'common/requests/RequestFactory';
 import AuthenticationUtils from 'common/AuthenticationUtils';
 
 export default {
+  name: "Login",
   data() {
     return {
       titleForm: 'Sign In',

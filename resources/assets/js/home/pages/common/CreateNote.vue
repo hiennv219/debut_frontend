@@ -28,12 +28,24 @@
 
                 </div>
                 <div class="form-group">
+                  <select class="form-control" name="type"
+                      v-model="type"
+                      @focus="clearErrors"
+                      v-validate.disabled="'required|numeric'">
+                    <option value="1">Only me</option>
+                    <option value="0">Public</option>
+                  </select>
+                  <small class="form-text" :class="errors.has('type') ? 'text-danger' : ''">
+                    {{ errors.first('type') }}
+                  </small>
+
+                </div>
+                <div class="form-group">
                   <label for="">Content</label>
-                  <textarea type="text" class="form-control" placeholder="Take a note..." rows="15"
-                    v-model="content"
-                    name="content"
-                    @focus="clearErrors"
-                    v-validate.disabled="'required'"></textarea>
+                    <vue-editor v-model="content"
+                        name="content"
+                        @focus="clearErrors"
+                        v-validate.disabled="'required'"/>
                     <small class="form-text" :class="errors.has('content') ? 'text-danger' : ''">
                       {{ errors.first('content') }}
                     </small>
@@ -52,13 +64,16 @@
 
 <script>
 import rf from 'common/requests/RequestFactory.js';
+import { VueEditor } from "vue2-editor";
 
 export default {
+  name: "CreateNote",
+  components: { VueEditor },
   data() {
     return {
       title: '',
       content: '',
-      private: 0,
+      type: 1,
     }
   },
   methods: {
@@ -74,7 +89,7 @@ export default {
         const params = {
           title: this.title,
           content: this.content,
-          private: this.private,
+          private: this.type,
         };
         rf.getRequest('NoteRequest').create(params).then(res => {
           console.log(res);

@@ -2,21 +2,21 @@ import BaseModelRequest from '../lib/BaseModelRequest';
 
 export default class AuthenticatorRequest extends BaseModelRequest {
   getModelName() {
-    return '/authenticator'
+    return 'authenticator'
   }
 
   otpVerify(params) {
-    const url = this.getModelName() + '/verify-otp';
+    const url = this.getUrl('/verify-otp');
     return this.post(url, params);
   }
 
   disableOtp(params) {
-    const url = this.getModelName() + '/disable-otp';
+    const url = this.getUrl('/disable-otp');
     return this.post(url, params);
   }
 
   generalQrCode(params) {
-    const url = this.getModelName() + '/general-otp';
+    const url = this.getUrl('/general-otp');
     return this.get(url, params);
   }
 

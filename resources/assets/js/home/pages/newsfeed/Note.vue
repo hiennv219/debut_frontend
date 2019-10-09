@@ -3,29 +3,23 @@
     <div class="post" v-for="note in notes">
       <h3 class="title">{{ note.title }}</h3>
       <span class="text-muted time">{{ note.updated_at }}</span>
-      <p v-html="note.content"></p>
+      <div v-html="note.content"></div>
     </div>
+
   </div>
 </template>
 
 <script>
 import rf from 'common/requests/RequestFactory.js';
+
 export default {
+  name: "ListNote",
   data() {
     return {
       notes: {},
     }
   },
   methods: {
-    getSocketEventHandlers() {
-      return {
-        NoteUpdated: this.onReceiveNote
-      }
-    },
-    onReceiveNote(data) {
-      // console.log(data);
-      this.notes = _.concat(this.note, data.data);
-    },
     getNotes() {
       rf.getRequest('NoteRequest').getLists().then(res => {
         this.notes = res.data;

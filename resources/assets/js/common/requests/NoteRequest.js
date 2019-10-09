@@ -6,12 +6,12 @@ export default class UserRequest extends BaseModelRequest {
   }
 
   create(params) {
-    const url ='/notes/take-a-note';
+    const url = this.getUrl();
     return this.post(url, params);
   }
 
   getLists(params) {
-    const url ='/notes';
+    const url = this.getUrl();
     return this.get(url, params);
   }
 

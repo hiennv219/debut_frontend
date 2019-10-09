@@ -30,4 +30,9 @@ export default class BaseModelRequest extends BaseRequest {
     let url = '/' + this.getModelName() + '/' + id;
     return this.del(url);
   }
+
+  getUrl(slug) {
+    return slug ? '/' + this.getModelName() + slug : '/' + this.getModelName();
+  }
+
 }

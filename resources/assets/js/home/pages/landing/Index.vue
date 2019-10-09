@@ -19,7 +19,7 @@
 import {mapState, mapGetters } from 'vuex';
 
 export default {
-  name: 'IndexPage',
+  name: 'LandingPage',
   computed: {
     ...mapState(['appTitle'])
   },
