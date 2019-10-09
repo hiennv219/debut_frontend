@@ -30,10 +30,17 @@ export default class GlobalSocket {
   }
 
   subscribePublicChannels() {
-
+    this.listenForNote()
   }
 
   subscribePrivateChannels() {
 
+  }
+
+  listenForNote() {
+    window.Echo.channel('app.public')
+                .listen('NoteUpdated', (res) => {
+                  window.app.$broadcast('NoteUpdated', res);
+                });
   }
 }

@@ -1,6 +1,6 @@
 import zlib from 'browserify-zlib';
 import buffer from 'buffer';
-import rf from 'requestfactory';
+import rf from './requests/RequestFactory';
 
 const masterdataVersionKey = 'masterdata_version';
 const masterdataKey = 'masterdata';

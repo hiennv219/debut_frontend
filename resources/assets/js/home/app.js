@@ -4,6 +4,7 @@
 * building robust, powerful web applications using Vue and Laravel.
 */
 import 'common/bootstrap';
+import 'common/filters';
 import Vue from 'vue';
 import VueBroadcast from 'common/VueBroadcast';
 import VueRouter from 'vue-router';
@@ -20,7 +21,6 @@ import Toasted from 'vue-toasted';
 // import VueQrcode from '@chenfengyuan/vue-qrcode';
 // import VModal from 'vue-js-modal';
 import vClickOutside from 'v-click-outside';
-
 
 import store from '../common/store';
 import App from './components/App.vue';

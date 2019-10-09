@@ -1,8 +1,10 @@
 import BasePage from './components/BasePage.vue';
 import LangdingPage from './pages/landing/Index.vue';
-import DebutIndex from './pages/landing/DebutIndex.vue';
 import Login from './pages/auth/Login.vue';
 import Register from './pages/auth/Register.vue';
+import PrivateSpaceIndex from './pages/private/Index.vue';
+import NewsFeedIndex from './pages/newsfeed/Index.vue';
+import GoogleAuthenticator from './pages/account/GoogleAuthenticator.vue';
 
 export default {
   mode: 'history',
@@ -16,9 +18,6 @@ export default {
           path: '/',
           component: LangdingPage,
           name: 'LangdingPage',
-          meta: {
-            requiresGuest: true,
-          }
         },
         {
           path: '/login',
@@ -31,15 +30,25 @@ export default {
           name: 'Register'
         },
         {
-          path: '/debut',
-          component: DebutIndex,
+          path: '/private-space',
+          component: PrivateSpaceIndex,
           meta: {
             requiresAuth: true
           }
         },
         {
-          path: '/test',
-          component: DebutIndex,
+          path: '/newsfeed',
+          component: NewsFeedIndex,
+          meta: {
+            requiresAuth: true
+          }
+        },
+        {
+          path: '/google-authenticator',
+          component: GoogleAuthenticator,
+          meta: {
+            requiresAuth: true
+          }
         },
       ]
     },

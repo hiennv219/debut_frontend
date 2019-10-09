@@ -9,16 +9,19 @@
     <div class="preloader">
   		<span class="spinner spinner-round"></span>
   	</div>
+    <notify/>
   </div>
 </template>
 
 <script>
 import Navigation from '../layouts/Navigation';
+import Notify from '../layouts/Notify';
 
 export default {
   name: 'BaseApp',
   components: {
-    Navigation
+    Navigation,
+    Notify
   }
 }
 
