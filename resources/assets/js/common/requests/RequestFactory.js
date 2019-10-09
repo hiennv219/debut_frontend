@@ -1,9 +1,11 @@
 import UserRequest from './UserRequest';
 import NoteRequest from './NoteRequest';
+import AuthenticatorRequest from './AuthenticatorRequest';
 
 const requestMap = {
   UserRequest,
-  NoteRequest
+  AuthenticatorRequest,
+  NoteRequest,
 };
 
 const instances = {};

@@ -47,25 +47,9 @@ export default class UserRequest extends BaseModelRequest {
     return this.post(url, params);
   }
 
-  otpVerify(params) {
-    const url = '/otp-verify';
-    return this.post(url, params);
-  }
-
-  disableOtp(params) {
-    const url = '/disable-otp';
-    return this.post(url, params);
-  }
-
   getInformartion(params) {
-    const url ='/user-security-level';
+    const url ='/user/security-level';
     return this.get(url, params);
   }
-
-  generalQrCode(params) {
-    const url ='/general-qr-code';
-    return this.get(url, params);
-  }
-
 
 }

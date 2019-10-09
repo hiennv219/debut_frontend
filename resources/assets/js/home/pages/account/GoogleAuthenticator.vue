@@ -86,18 +86,18 @@ export default {
         };
 
         if(this.securityLevel == 1) {
-          rf.getRequest('UserRequest').otpVerify(params).then(res => {
+          rf.getRequest('AuthenticatorRequest').otpVerify(params).then(res => {
 
           });
         }else {
-          rf.getRequest('UserRequest').disableOtp(params).then(res => {
+          rf.getRequest('AuthenticatorRequest').disableOtp(params).then(res => {
 
           });
         }
       });
     },
     generalQrCode() {
-      rf.getRequest('UserRequest').generalQrCode().then(res => {
+      rf.getRequest('AuthenticatorRequest').generalQrCode().then(res => {
         this.QrCode = res;
       });
     },
