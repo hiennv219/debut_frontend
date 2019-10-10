@@ -15,11 +15,8 @@ import AuthenticationUtils from 'common/AuthenticationUtils';
 
 import VeeValidate, { Validator } from 'vee-validate';
 import Vue2Editor from "vue2-editor";
-// import VTooltip from 'v-tooltip';
 // import VueLoading from 'vue-loading-template';
-// import FullScreen from 'vue-fullscreen';
 import Toasted from 'vue-toasted';
-// import VueQrcode from '@chenfengyuan/vue-qrcode';
 // import VModal from 'vue-js-modal';
 import vClickOutside from 'v-click-outside';
 
@@ -30,15 +27,10 @@ Vue.use(VueRouter);
 Vue.use(VueBroadcast);
 
 
-
-// Vue.component(VueQrcode.name, VueQrcode);
 Vue.use(VeeValidate);
 Vue.use(Vue2Editor);
-// Vue.use(VTooltip);
 Vue.use(Toasted);
 // Vue.use(VModal);
-// Vue.use(VueQrcode);
-// Vue.use(FullScreen);
 // Vue.use(VueLoading);
 Vue.use(vClickOutside);
 

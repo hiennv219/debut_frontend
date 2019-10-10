@@ -1,30 +1,57 @@
 <template>
-  <div class="">
-      <h2 class="text-center title-home-page">Private Space</h2>
-      <p class="text-center text-gray">{{ $t('index_page.welcome') }}</p>
-
+  <div class="news">
+    <note :private="true"></note>
+    <create-note></create-note>
+    <toast :message="notify"></toast>
   </div>
 </template>
 
 <script>
 import {mapState, mapGetters } from 'vuex';
+import rf from 'common/requests/RequestFactory.js';
+import Note from '../newsfeed/Note';
+import CreateNote from '../common/CreateNote';
+import Toast from '../common/Toast';
 
 export default {
-  name: 'PrivateSpace',
+  name: 'NewsFeed',
+  components: {
+    Note,
+    CreateNote,
+    Toast
+  },
+  data() {
+    return {
+      isShow: false,
+      notify: "",
+    }
+  },
   computed: {
     ...mapState([
       'appTitle',
       'isAuthenticated',
     ])
   },
-  mounted() {
+  methods: {
+    getSocketEventHandlers() {
+      return {
+        NoteUpdated: this.onReceiveNote
+      }
+    },
+    onReceiveNote(data) {
+      this.isShow = true;
+      this.notify = "New Note of anonymous user: \"" + data.title + "\"";
+    },
+    getNotes() {
+      rf.getRequest('NoteRequest').getLists().then(res => {
+        this.notes = res.data;
+      }).catch((error) => {
 
+      });
+    },
   }
 }
 </script>
 
-<style lang="css" scoped>
-.title-home-page{
-  margin-top: 50px;
-}
+<style lang="scss" scoped>
 </style>
