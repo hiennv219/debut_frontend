@@ -1,11 +1,20 @@
 <template>
-  <div class="posts">
-    <div class="post" v-for="note in notes">
-      <h3 class="title">{{ note.title }}</h3>
-      <span class="text-muted time">{{ note.updated_at }}</span>
-      <div v-html="note.content"></div>
-    </div>
+  <div class="">
+    <input type="text" list="titles" name="myBrowser" class="form-control search"
+            placeholder="Find a something.."
+            v-model="keywords" @keyup.enter="getNotes"/>
+    <datalist id="titles">
+      <option v-for="note in notes">{{ note.title }}</option>
+    </datalist>
 
+    <div class="posts">
+      <div class="post" v-for="note in notes">
+        <h3 class="title">{{ note.title }}</h3>
+        <span class="text-muted time">{{ note.updated_at }}</span>
+        <div v-html="note.content"></div>
+      </div>
+
+    </div>
   </div>
 </template>
 
@@ -14,17 +23,26 @@ import rf from 'common/requests/RequestFactory.js';
 
 export default {
   name: "ListNote",
+  props: ['private'],
   data() {
     return {
       notes: {},
+      keywords: "",
     }
   },
   methods: {
     getNotes() {
-      rf.getRequest('NoteRequest').getLists().then(res => {
+      var params = {
+        keywords: this.keywords
+      }
+      if(this.private) {
+        params = { ...params, ...{ private: this.private} };
+      }
+      rf.getRequest('NoteRequest').getLists(params).then(res => {
         this.notes = res.data;
+        console.log(res.data);
       }).catch((error) => {
-
+        console.log(error);
       });
     },
   },
@@ -42,7 +60,7 @@ export default {
       border-radius: 8px;
       border: 1px solid #cdcdcd;
       width: 90%;
-      margin-bottom: 50px;
+      margin-bottom: 20px;
       padding: 1rem 15px;
 
       .title{
@@ -87,5 +105,13 @@ export default {
     .modal-body{
       border-radius: 0px !important;
     }
+  }
+  .search{
+    height: 50px;
+    width: 90%;
+    border-radius: 25px;
+    padding-left: 30px;
+    margin: 10px auto;
+    margin-bottom: 50px;
   }
 </style>
