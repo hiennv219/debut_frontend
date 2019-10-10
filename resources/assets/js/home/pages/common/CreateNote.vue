@@ -5,59 +5,53 @@
       +
     </button>
 
-      <div class="modal fade form-note" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Create a note</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                  <label for="">Title</label>
-                  <input type="text" class="form-control" placeholder="About the issue"
-                    v-model="title"
-                    name="title"
+    <div class="modal fade form-note" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="">Title</label>
+                <input type="text" class="form-control" placeholder="About the issue"
+                  v-model="title"
+                  name="title"
+                  @focus="clearErrors"
+                  v-validate.disabled="'required'">
+                <small class="form-text" :class="errors.has('title') ? 'text-danger' : ''">
+                  {{ errors.first('title') }}
+                </small>
+
+              </div>
+              <div class="form-group">
+                <select class="form-control" name="type"
+                    v-model="type"
                     @focus="clearErrors"
-                    v-validate.disabled="'required'">
-                  <small class="form-text" :class="errors.has('title') ? 'text-danger' : ''">
-                    {{ errors.first('title') }}
-                  </small>
+                    v-validate.disabled="'required|numeric'">
+                  <option value="1">Only me</option>
+                  <option value="0">Public</option>
+                </select>
+                <small class="form-text" :class="errors.has('type') ? 'text-danger' : ''">
+                  {{ errors.first('type') }}
+                </small>
 
-                </div>
-                <div class="form-group">
-                  <select class="form-control" name="type"
-                      v-model="type"
+              </div>
+              <div class="form-group">
+                <label for="">Content</label>
+                  <vue-editor id="responsibilityEdit" v-model="content"
+                      name="content"
                       @focus="clearErrors"
-                      v-validate.disabled="'required|numeric'">
-                    <option value="1">Only me</option>
-                    <option value="0">Public</option>
-                  </select>
-                  <small class="form-text" :class="errors.has('type') ? 'text-danger' : ''">
-                    {{ errors.first('type') }}
+                      v-validate.disabled="'required'"/>
+                  <small class="form-text" :class="errors.has('content') ? 'text-danger' : ''">
+                    {{ errors.first('content') }}
                   </small>
-
-                </div>
-                <div class="form-group">
-                  <label for="">Content</label>
-                    <vue-editor v-model="content"
-                        name="content"
-                        @focus="clearErrors"
-                        v-validate.disabled="'required'"/>
-                    <small class="form-text" :class="errors.has('content') ? 'text-danger' : ''">
-                      {{ errors.first('content') }}
-                    </small>
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" @click="release">Release</button>
-            </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" @click="release">Release</button>
           </div>
         </div>
       </div>
+    </div>
 
   </div>
 </template>
@@ -103,6 +97,12 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.ql-container .ql-editor{
+  min-height: 450px;
+}
+</style>
+
 <style lang="scss" scoped>
   .take-note{
     background-color: #23c99d;
@@ -126,5 +126,19 @@ export default {
     .modal-body{
       border-radius: 0px !important;
     }
+  }
+
+  .modal-dialog {
+    width: 90%;
+    max-width: 90%;
+    height: 95%;
+    margin: 10px auto;
+    padding: 0;
+  }
+
+  .modal-content {
+    height: auto;
+    min-height: 100%;
+    border-radius: 0;
   }
 </style>
