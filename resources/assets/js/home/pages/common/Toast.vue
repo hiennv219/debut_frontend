@@ -19,7 +19,7 @@ export default {
       this.$toasted.show( this.message, {
       	 theme: "toasted-primary",
       	 position: "bottom-right",
-      	 duration : 1000,
+      	 duration : 2000,
       });
       this.display = false;
     }

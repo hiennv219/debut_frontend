@@ -112,7 +112,7 @@ export default {
     height: 45px;
     width: 45px;
     position: fixed;
-    top: 120px;
+    bottom: 20px;
     left: 20px;
     color: #fff;
     font-weight: bold;
