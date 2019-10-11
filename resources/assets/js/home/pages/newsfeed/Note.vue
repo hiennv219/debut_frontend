@@ -23,7 +23,7 @@ import rf from 'common/requests/RequestFactory.js';
 
 export default {
   name: "ListNote",
-  props: ['private'],
+  props: ['type'],
   data() {
     return {
       notes: {},
@@ -35,8 +35,8 @@ export default {
       var params = {
         keywords: this.keywords
       }
-      if(this.private) {
-        params = { ...params, ...{ private: this.private} };
+      if(this.type) {
+        params = { ...params, ...{ type: this.type} };
       }
       rf.getRequest('NoteRequest').getLists(params).then(res => {
         this.notes = res.data;

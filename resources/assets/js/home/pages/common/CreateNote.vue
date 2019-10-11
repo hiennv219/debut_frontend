@@ -83,7 +83,7 @@ export default {
         const params = {
           title: this.title,
           content: this.content,
-          private: this.type,
+          type: this.type,
         };
         rf.getRequest('NoteRequest').create(params).then(res => {
           console.log(res);

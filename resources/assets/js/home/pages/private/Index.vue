@@ -1,6 +1,6 @@
 <template>
   <div class="news">
-    <note :private="true"></note>
+    <note :type="type"></note>
     <create-note></create-note>
     <toast :message="notify"></toast>
   </div>
@@ -24,6 +24,7 @@ export default {
     return {
       isShow: false,
       notify: "",
+      type: "private",
     }
   },
   computed: {

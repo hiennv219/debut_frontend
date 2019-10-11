@@ -1,6 +1,6 @@
 <template>
   <div class="news">
-    <note></note>
+    <note :type="type"></note>
     <create-note></create-note>
     <toast :message="notify"></toast>
   </div>
@@ -23,7 +23,8 @@ export default {
   data() {
     return {
       isShow: false,
-      notify: "",
+      notify: '',
+      type: 'social',
     }
   },
   computed: {
