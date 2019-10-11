@@ -46,7 +46,7 @@
               </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" @click="release">Release</button>
           </div>
         </div>
@@ -74,6 +74,10 @@ export default {
     clearErrors() {
       this.errors.clear();
     },
+    clearFields() {
+      this.title = "";
+      this.content = "";
+    },
     release() {
       this.$validator.validate().then(async (result) => {
         if(!result) {
@@ -86,7 +90,8 @@ export default {
           type: this.type,
         };
         rf.getRequest('NoteRequest').create(params).then(res => {
-          console.log(res);
+          console.log("Success");
+          this.clearFields();
         }).catch((error) => {
 
         });
