@@ -4,6 +4,7 @@ import Login from './pages/auth/Login.vue';
 import Register from './pages/auth/Register.vue';
 import PrivateSpaceIndex from './pages/private/Index.vue';
 import NewsFeedIndex from './pages/newsfeed/Index.vue';
+import SingleNote from './pages/note/Single.vue';
 import GoogleAuthenticator from './pages/account/GoogleAuthenticator.vue';
 
 export default {
@@ -42,6 +43,11 @@ export default {
           meta: {
             requiresAuth: true
           }
+        },
+        {
+          path: '/notes/:id',
+          component: SingleNote,
+          name: 'NotePage',
         },
         {
           path: '/google-authenticator',

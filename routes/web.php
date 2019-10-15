@@ -12,4 +12,4 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/{view?}', 'HomeController@index');
+Route::get('/{view?}', 'HomeController@index')->where('view', '(.*)');
