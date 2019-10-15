@@ -9,9 +9,9 @@
 
     <div class="posts">
       <div class="post" v-for="note in notes">
-        <h3 class="title">{{ note.title }}</h3>
-        <span class="text-muted time">{{ note.updated_at }}</span>
-        <div v-html="note.content"></div>
+        <a class="title" :href="'/notes/' + note.id">{{ note.title }}</a>
+        <p class="text-muted time">{{ note.updated_at }}</p>
+        <div class="wrap-content" v-html="note.content"></div>
       </div>
 
     </div>
@@ -81,6 +81,15 @@ export default {
     .post:nth-child(odd) {
       float: left;
     }
+  }
+
+  .wrap-content{
+    display: inline-block;
+    width: 100%;
+    max-height: 200px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
   }
 
   .take-note{

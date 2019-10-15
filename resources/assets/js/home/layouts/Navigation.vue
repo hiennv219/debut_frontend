@@ -6,7 +6,7 @@
         <div class="header-wrap">
           <!-- Logo @s -->
           <div class="header-logo logo">
-            <a href="./" class="logo-link"> <img class="logo-dark"
+            <a href="/" class="logo-link"> <img class="logo-dark"
               src="/images/beyond/logo.png" srcset="/images/beyond/logo.png" alt="logo">
               <img class="logo-light" src="/images/beyond/logo.png"
               srcset="/images/beyond/logo.png" alt="logo">
@@ -32,9 +32,9 @@
                   <div class="menu-sub menu-drop menu-mega menu-mega-2clmn">
                     <div class="menu-mega-innr">
                       <ul class="menu-mega-list">
-                        <li class="menu-item"><a href="/private-space" class="btn btn-primary">{{ user.email | getUserName }}</a></li>
-                        <li class="menu-item"><a href="/newsfeed">News Feed</a> </li>
-                        <li class="menu-item"><a href="/google-authenticator">OTP</a> </li>
+                        <li class="menu-item"><a href="/private" class="btn btn-primary">{{ user.email | getUserName }}</a></li>
+                        <li class="menu-item"><a href="/social">Social</a> </li>
+                        <li class="menu-item"><a href="/authenticator">Authenticator</a> </li>
                       </ul>
                     </div>
                   </div>

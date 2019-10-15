@@ -9,7 +9,7 @@
 <script>
 import {mapState, mapGetters } from 'vuex';
 import rf from 'common/requests/RequestFactory.js';
-import Note from '../newsfeed/Note';
+import Note from '../note/Index';
 import CreateNote from '../common/CreateNote';
 import Toast from '../common/Toast';
 

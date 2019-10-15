@@ -2,8 +2,8 @@ import BasePage from './components/BasePage.vue';
 import LangdingPage from './pages/landing/Index.vue';
 import Login from './pages/auth/Login.vue';
 import Register from './pages/auth/Register.vue';
-import PrivateSpaceIndex from './pages/private/Index.vue';
-import NewsFeedIndex from './pages/newsfeed/Index.vue';
+import PrivateIndex from './pages/private/Index.vue';
+import SocialIndex from './pages/social/Index.vue';
 import SingleNote from './pages/note/Single.vue';
 import GoogleAuthenticator from './pages/account/GoogleAuthenticator.vue';
 
@@ -31,15 +31,15 @@ export default {
           name: 'Register'
         },
         {
-          path: '/private-space',
-          component: PrivateSpaceIndex,
+          path: '/private',
+          component: PrivateIndex,
           meta: {
             requiresAuth: true
           }
         },
         {
-          path: '/newsfeed',
-          component: NewsFeedIndex,
+          path: '/social',
+          component: SocialIndex,
           meta: {
             requiresAuth: true
           }
@@ -50,7 +50,7 @@ export default {
           name: 'NotePage',
         },
         {
-          path: '/google-authenticator',
+          path: '/authenticator',
           component: GoogleAuthenticator,
           meta: {
             requiresAuth: true

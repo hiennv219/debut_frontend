@@ -54,7 +54,7 @@ if (token) {
   // window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 
   //Add Authorization into Request headers of axios
-  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + AuthenticationUtils.getAccessToken();
+  window.axios.defaults.headers.common['Authorization'] = `Bearer ${AuthenticationUtils.getAccessToken()}`;
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
