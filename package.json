@@ -29,7 +29,7 @@
   "dependencies": {
     "@chenfengyuan/vue-qrcode": "^1.0.0",
     "ascii-fullwidth-halfwidth-convert": "^0.1.1",
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-polyfill": "^6.26.0",
     "bignumber.js": "^7.2.1",
